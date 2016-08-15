@@ -176,9 +176,9 @@ class PanLicapi:
     def deactivate(self, encryptedtoken=None):
         endpoint = '/deactivate'
         url = self.base_uri + endpoint
-        data = {
-            'encryptedtoken': encryptedtoken,
-        }
+        data = {}
+        if encryptedtoken is not None:
+            data['encryptedtoken'] = encryptedtoken
 
         r = self._api_request(url, self.headers, data)
         return r
@@ -186,9 +186,9 @@ class PanLicapi:
     def get(self, authcode=None):
         endpoint = '/get'
         url = self.base_uri + endpoint
-        data = {
-            'authCode': authcode,
-        }
+        data = {}
+        if authcode is not None:
+            data['authcode'] = authcode
 
         r = self._api_request(url, self.headers, data)
         return r
